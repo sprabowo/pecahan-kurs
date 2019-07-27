@@ -61,7 +61,7 @@ function FractionRupiah() {
   return (
     <Fragment>
       <section className="c-content">
-        <input className="c-content__input" data-testid="rupiah-input" value={rupiahInput} onChange={handleChange} onKeyDown={handleEnter} type="text" />
+        <input placeholder="masukkan jumlah uang" className="c-content__input" data-testid="rupiah-input" value={rupiahInput} onChange={handleChange} onKeyDown={handleEnter} type="text" />
         <div className="c-content__help"><small>contoh: <em>120000, 18.215, 180.231, Rp17500, Rp 500, Rp17.500,00, Rp 120.325, 005.000, 001000</em> kemudian tekan <strong>Enter</strong></small></div>
       </section>
       <section className="c-content">
