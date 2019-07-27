@@ -26,9 +26,12 @@ function FractionRupiah() {
     const regexPattern = new RegExp(/^(Rp\s?)?[0-9]*(\.[0-9]{3})*(,[0-9]{1,2})?$/g)
     if (regexPattern.test(input)) {
       let normalizeInput = input.replace(/^(Rp\s?)?/g, '').replace(/\./g, '').replace(/(,[0-9]{1,2})$/g, '')
-      if (normalizeInput.length) {
-        createFractionRupiah(normalizeInput)
+      if (normalizeInput.length && +(normalizeInput) > 0) {
+        createFractionRupiah(+(normalizeInput))
         errorColor(false)
+      } else if(parseInt(normalizeInput) === 0 || normalizeInput === '') {
+        errorColor(true)
+        setRupiahStatus('')
       } else {
         errorColor(true)
         setRupiahStatus('invalid input')
@@ -62,7 +65,7 @@ function FractionRupiah() {
     <Fragment>
       <section className="c-content">
         <input placeholder="masukkan jumlah uang" className="c-content__input" data-testid="rupiah-input" value={rupiahInput} onChange={handleChange} onKeyDown={handleEnter} type="text" />
-        <div className="c-content__help"><small>contoh: <em>120000, 18.215, 180.231, Rp17500, Rp 500, Rp17.500,00, Rp 120.325, 005.000, 001000</em> kemudian tekan <strong>Enter</strong></small></div>
+        <div className="c-content__help"><small>contoh: <em>120000, 18.215, 180.231, Rp17500, Rp 500, Rp17.500,00, Rp 120.325, 005.000, 001000</em> kemudian tekan ⌨️ <strong>Enter</strong></small></div>
       </section>
       <section className="c-content">
         <div className="c-content__result" data-testid="rupiah-status">{ rupiahStatus }</div>
